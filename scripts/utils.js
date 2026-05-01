@@ -15,20 +15,27 @@ export class ChickenUtils {
     return result;
   }
 
-  static get_loc_entities(entity) {
-    const location = [];
-    const entities = ChickenUtils.get_entities(entity);
-    for (const e of entities) {
-      if (!entities) return [];
-      const location_entities = {
-        x: e.location.x,
-        y: e.location.y,
-        z: e.location.z,
-      };
+  static get_loc_entities(entityType) {
+    const result = [];
+    const dimensionId = ['overworld', 'nether', 'the_end'];
+    const entities = ChickenUtils.get_entities(entityType);
+    for (const dimId of dimensionId) {
+      const dimension = world.getDimension(dimId);
+      const entities = dimension.getEntities({
+        type: entityType,
+      });
 
-      location.push(location_entities);
+      for (const e of entities) {
+        const loc = e.location;
+
+        result.push({
+          entity: e,
+          location: loc,
+          dimension: dimId,
+        });
+      }
     }
-    return location;
+    return result;
   }
 
   static get_below_block(entityType, below_block) {
@@ -60,14 +67,6 @@ export class ChickenUtils {
         }
       }
     }
-    console.warn(result);
-    const str = JSON.stringify(result);
-    console.warn(str);
     return result;
-  }
-
-  static chat(entity) {
-    const loc = ChickenUtils.get_loc_entities(entity);
-    console.warn(loc);
   }
 }

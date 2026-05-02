@@ -1,17 +1,15 @@
 import { ChickenUtils } from './utils';
-import { Boost_chicken } from './boost_chicken';
+import { drop_chicken } from './chickens';
 
 import { system } from '@minecraft/server';
 
 system.runInterval(() => {
-  Boost_chicken(
-    'minecraft:cow',
-    'minecraft:grass_block',
-    'minecraft:emerald',
+  drop_chicken(
+    'oc:gold_chicken',
+    'minecraft:gold_block',
+    'minecraft:gold_ingot',
     1,
-    5,
-    10
+    180,
+    300
   );
-
-    
 }, 20);

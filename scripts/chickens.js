@@ -7,14 +7,13 @@ import {
 } from '@minecraft/server';
 import { ChickenUtils } from './utils';
 
-export function drop_chicken(
-  chicken_ore,
-  block_boost,
-  spawn_item,
-  quantity,
-  min,
-  max
-) {
+export function drop_chicken(config) {
+  const chicken_ore = config.entity;
+  const block_boost = config.block;
+  const spawn_item = config.item;
+  const quantity = config.quantity;
+  const min = config.min;
+  const max = config.max;
   const chickens = ChickenUtils.get_entities(chicken_ore);
   const item = new ItemStack(spawn_item, quantity);
   for (const ch of chickens) {
@@ -23,10 +22,8 @@ export function drop_chicken(
 
     let multiplicar;
     if (ch.block?.typeId === block_boost) {
-      ch.entity.setDynamicProperty('boost', true);
       multiplicar = 0.2;
     } else {
-      ch.entity.setDynamicProperty('boost', false);
       multiplicar = 1;
     }
 
@@ -39,25 +36,15 @@ export function drop_chicken(
     count++;
     ch.entity.setDynamicProperty('count', count);
 
-    const status = ch.entity.getDynamicProperty('boost');
-    if (status == true) {
-      console.warn(`[Boost On: spawn: ${spawn}, count: ${count}]`);
-    } else {
-      console.warn(`[Boost Off: spawn: ${spawn}, count: ${count}]`);
-    }
-
     if (spawn <= count) {
-      world.getDimension(ch.dimension).spawnItem(item, ch.location);
-      world
-        .getDimension(ch.dimension)
-        .playSound('mob.chicken.plop', ch.location);
-      world
-        .getDimension(ch.dimension)
-        .spawnParticle('minecraft:crop_growth_emitter', {
-          x: ch.location.x,
-          y: ch.location.y + 0.5,
-          z: ch.location.z,
-        });
+      const dimension = world.getDimension(ch.dimension);
+      dimension.spawnItem(item, ch.location);
+      dimension.playSound('mob.chicken.plop', ch.location);
+      dimension.spawnParticle('minecraft:crop_growth_emitter', {
+        x: ch.location.x,
+        y: ch.location.y + 0.5,
+        z: ch.location.z,
+      });
       ch.entity.setDynamicProperty('count', 0);
 
       const newSpawn = Math.floor(
@@ -68,3 +55,14 @@ export function drop_chicken(
     }
   }
 }
+
+export const Chicken = {
+  gold: {
+    entity: 'oc:gold_chicken',
+    block: 'minecraft:gold_block',
+    item: 'minecraft:gold_ingot',
+    quantity: 1,
+    min: 180,
+    max: 300,
+  },
+};

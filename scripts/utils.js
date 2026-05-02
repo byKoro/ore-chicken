@@ -6,11 +6,11 @@ export class ChickenUtils {
 
     for (const dimType of DimensionTypes.getAll()) {
       const dimension = world.getDimension(dimType.typeId);
-      const chickens = dimension.getEntities({
+      const entities = dimension.getEntities({
         type: entity,
       });
 
-      result.push(...chickens);
+      result.push(...entities);
     }
     return result;
   }
@@ -60,6 +60,7 @@ export class ChickenUtils {
 
         if (block?.typeId == below_block) {
           result.push({
+            block: block?.typeId,
             entity: e,
             location: loc,
             dimension: dimId,
@@ -68,5 +69,9 @@ export class ChickenUtils {
       }
     }
     return result;
+  }
+
+  static randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 }

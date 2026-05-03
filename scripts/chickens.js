@@ -182,4 +182,14 @@ export const Chickens = {
     itemConvert: 'minecraft:copper_block',
     entityToConvert: 'minecraft:chicken',
   },
+  diamond: {
+    entity: 'oc:diamond_chicken',
+    block: 'minecraft:diamond_block',
+    item: 'minecraft:diamond',
+    quantity: 1,
+    min: 180,
+    max: 300,
+    itemConvert: 'minecraft:diamod',
+    entityToConvert: 'minecraft:chicken',
+  },
 };

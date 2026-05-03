@@ -11,6 +11,7 @@ system.runInterval(() => {
   drop_chicken(Chickens.amethyst);
   drop_chicken(Chickens.redstone);
   drop_chicken(Chickens.copper);
+  drop_chicken(Chickens.diamond);
 }, 20);
 
 convert_chicken(Chickens.gold);
@@ -20,5 +21,6 @@ convert_chicken(Chickens.lapis);
 convert_chicken(Chickens.amethyst);
 convert_chicken(Chickens.redstone);
 convert_chicken(Chickens.copper);
+convert_chicken(Chickens.diamond);
 
 oxidation(Chickens.copper, 20);

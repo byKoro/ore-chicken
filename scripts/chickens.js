@@ -86,6 +86,31 @@ export function convert_chicken(config) {
   });
 }
 
+export function oxidation(config, timeInMinutes) {
+  const interval = 20 * 60; // roda a cada 1 minuto
+
+  system.runInterval(() => {
+    const dimensions = ['overworld', 'nether', 'the_end'];
+
+    for (const dimId of dimensions) {
+      const dimension = world.getDimension(dimId);
+
+      const chickens = dimension.getEntities({
+        type: config.entity,
+      });
+
+      for (const c of chickens) {
+        let stage = c.getProperty('oc:oxidation') ?? 0;
+
+        const chance = Math.random();
+
+        if (stage < 3 && chance < 0.2) {
+          c.setProperty('oc:oxidation', stage + 1);
+        }
+      }
+    }
+  }, interval);
+}
 export const Chickens = {
   gold: {
     entity: 'oc:gold_chicken',
@@ -125,6 +150,36 @@ export const Chickens = {
     min: 180,
     max: 300,
     itemConvert: 'minecraft:lapis_block',
+    entityToConvert: 'minecraft:chicken',
+  },
+  amethyst: {
+    entity: 'oc:amethyst_chicken',
+    block: 'minecraft:amethyst_block',
+    item: 'minecraft:amethyst_shard',
+    quantity: 1,
+    min: 180,
+    max: 300,
+    itemConvert: 'minecraft:budding_amethyst',
+    entityToConvert: 'minecraft:chicken',
+  },
+  redstone: {
+    entity: 'oc:redstone_chicken',
+    block: 'minecraft:redstone_block',
+    item: 'minecraft:redstone',
+    quantity: 1,
+    min: 180,
+    max: 300,
+    itemConvert: 'minecraft:redstone_block',
+    entityToConvert: 'minecraft:chicken',
+  },
+  copper: {
+    entity: 'oc:copper_chicken',
+    block: 'minecraft:copper_block',
+    item: 'minecraft:copper_ingot',
+    quantity: 1,
+    min: 180,
+    max: 300,
+    itemConvert: 'minecraft:copper_block',
     entityToConvert: 'minecraft:chicken',
   },
 };

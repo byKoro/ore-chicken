@@ -13,6 +13,11 @@
           "range": [0, 3],
           "default": 0,
           "client_sync": true
+        },
+        "oc:wax": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
         }
       }
     },
@@ -24,12 +29,7 @@
         },
         "minecraft:ageable": {
           "duration": 1200,
-          "feed_items": [
-            "wheat_seeds",
-            "beetroot_seeds",
-            "melon_seeds",
-            "pumpkin_seeds"
-          ],
+          "feed_items": ["minecraft:copper_block"],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
             "target": "self"
@@ -58,12 +58,7 @@
               "target": "baby"
             }
           },
-          "breed_items": [
-            "wheat_seeds",
-            "beetroot_seeds",
-            "melon_seeds",
-            "pumpkin_seeds"
-          ]
+          "breed_items": ["minecraft:copper_block"]
         },
         "minecraft:behavior.breed": {
           "priority": 3,
@@ -75,24 +70,135 @@
           "seats": {
             "position": [0, 0.4, 0]
           }
+        }
+      },
+      "oc:statue": {
+        "minecraft:movement": { "value": 0 },
+        "minecraft:knockback_resistance": { "value": 1 },
+        "minecraft:behavior.random_stroll": {
+          "priority": 0,
+          "speed_multiplier": 0
         },
-        "minecraft:spawn_entity": {
-          "entities": {
-            "min_wait_time": 300,
-            "max_wait_time": 600,
-            "spawn_sound": "plop",
-            "spawn_item": "egg",
-            "filters": {
-              "test": "rider_count",
-              "subject": "self",
-              "operator": "==",
-              "value": 0
-            }
-          }
+        "minecraft:behavior.panic": { "priority": 0, "speed_multiplier": 0 },
+        "minecraft:behavior.tempt": { "priority": 0, "speed_multiplier": 0 },
+        "minecraft:behavior.breed": { "priority": 0, "speed_multiplier": 0 },
+        "minecraft:behavior.mount_pathing": {
+          "priority": 0,
+          "speed_multiplier": 0
+        },
+        "minecraft:behavior.follow_parent": {
+          "priority": 0,
+          "speed_multiplier": 0
         }
       }
     },
     "components": {
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "interact_text": "action.interact.wax_on",
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "domain": "hand",
+                    "subject": "other",
+                    "test": "has_equipment",
+                    "value": "honeycomb"
+                  },
+                  {
+                    "domain": "oc:wax",
+                    "test": "bool_property",
+                    "value": false
+                  }
+                ]
+              },
+              "event": "oc:wax_on",
+              "target": "self"
+            },
+            "particle_on_start": { "copper_event": "wax_on" },
+            "use_item": true,
+            "swing": true
+          },
+          {
+            "interact_text": "action.interact.wax_off",
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "domain": "hand",
+                    "subject": "other",
+                    "test": "has_equipment_tag",
+                    "value": "minecraft:is_axe"
+                  },
+                  {
+                    "domain": "oc:wax",
+                    "test": "bool_property",
+                    "value": true
+                  },
+                  {
+                    "domain": "oc:oxidation",
+                    "test": "int_property",
+                    "operator": ">",
+                    "value": 0
+                  }
+                ]
+              },
+              "event": "oc:wax_off",
+              "target": "self"
+            },
+            "particle_on_start": { "copper_event": "wax_off" },
+            "hurt_item": 1,
+            "swing": true
+          },
+          {
+            "interact_text": "action.interact.scrape",
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "domain": "hand",
+                    "subject": "other",
+                    "test": "has_equipment_tag",
+                    "value": "minecraft:is_axe"
+                  },
+                  {
+                    "domain": "oc:wax",
+                    "test": "bool_property",
+                    "value": false
+                  },
+                  {
+                    "domain": "oc:oxidation",
+                    "test": "int_property",
+                    "operator": ">",
+                    "value": 0
+                  }
+                ]
+              },
+              "event": "oc:scrape",
+              "target": "self"
+            },
+            "particle_on_start": { "copper_event": "scrape" },
+            "hurt_item": 1,
+            "swing": true
+          }
+        ]
+      },
       "minecraft:type_family": {
         "family": ["chicken", "mob"]
       },
@@ -123,9 +229,7 @@
           }
         ]
       },
-      "minecraft:movement": {
-        "value": 0.25
-      },
+      "minecraft:movement": { "value": 0.2 },
       "minecraft:damage_sensor": {
         "triggers": {
           "cause": "fall",
@@ -137,9 +241,7 @@
         "hard_distance": 6,
         "max_distance": 10
       },
-      "minecraft:balloonable": {
-        "mass": 0.5
-      },
+      "minecraft:balloonable": { "mass": 0.5 },
       "minecraft:navigation.walk": {
         "can_path_over_water": true,
         "avoid_damage_blocks": true
@@ -147,16 +249,8 @@
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
-      "minecraft:despawn": {
-        "despawn_from_distance": {}
-      },
-      "minecraft:behavior.float": {
-        "priority": 0
-      },
-      "minecraft:behavior.panic": {
-        "priority": 1,
-        "speed_multiplier": 1.5
-      },
+      "minecraft:behavior.float": { "priority": 0 },
+      "minecraft:behavior.panic": { "priority": 1, "speed_multiplier": 1.5 },
       "minecraft:behavior.mount_pathing": {
         "priority": 2,
         "speed_multiplier": 1.5,
@@ -166,12 +260,7 @@
       "minecraft:behavior.tempt": {
         "priority": 4,
         "speed_multiplier": 1,
-        "items": [
-          "wheat_seeds",
-          "beetroot_seeds",
-          "melon_seeds",
-          "pumpkin_seeds"
-        ]
+        "items": ["minecraft:copper_block"]
       },
       "minecraft:behavior.random_stroll": {
         "priority": 6,
@@ -182,9 +271,7 @@
         "look_distance": 6,
         "probability": 0.02
       },
-      "minecraft:behavior.random_look_around": {
-        "priority": 8
-      },
+      "minecraft:behavior.random_look_around": { "priority": 8 },
       "minecraft:physics": {},
       "minecraft:pushable": {
         "is_pushable": true,
@@ -196,11 +283,6 @@
       }
     },
     "events": {
-      "from_egg": {
-        "add": {
-          "component_groups": ["minecraft:copper_chicken_baby"]
-        }
-      },
       "minecraft:entity_spawned": {
         "randomize": [
           {
@@ -233,6 +315,75 @@
         "add": {
           "component_groups": ["minecraft:copper_chicken_adult"]
         }
+      },
+      "oc:wax_on": {
+        "set_property": { "oc:wax": true }
+      },
+      "oc:wax_off": {
+        "sequence": [
+          {
+            "set_property": { "oc:wax": false }
+          },
+          {
+            "first_valid": [
+              {
+                "filters": {
+                  "domain": "oc:oxidation",
+                  "test": "int_property",
+                  "value": 3
+                },
+                "set_property": { "oc:oxidation": 2 }
+              },
+              {
+                "filters": {
+                  "domain": "oc:oxidation",
+                  "test": "int_property",
+                  "value": 2
+                },
+                "set_property": { "oc:oxidation": 1 }
+              },
+              {
+                "filters": {
+                  "domain": "oc:oxidation",
+                  "test": "int_property",
+                  "value": 1
+                },
+                "set_property": { "oc:oxidation": 0 }
+              }
+            ]
+          }
+        ]
+      },
+      "oc:scrape": {
+        "first_valid": [
+          {
+            "filters": {
+              "domain": "oc:oxidation",
+              "test": "int_property",
+              "value": 3
+            },
+            "set_property": { "oc:oxidation": 2 }
+          },
+          {
+            "filters": {
+              "domain": "oc:oxidation",
+              "test": "int_property",
+              "value": 2
+            },
+            "set_property": { "oc:oxidation": 1 }
+          },
+          {
+            "filters": {
+              "domain": "oc:oxidation",
+              "test": "int_property",
+              "value": 1
+            },
+            "set_property": { "oc:oxidation": 0 }
+          }
+        ]
+      },
+      "oc:become_statue": {
+        "add": { "component_groups": ["oc:statue"] }
       }
     }
   }

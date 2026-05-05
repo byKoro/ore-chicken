@@ -115,9 +115,7 @@
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
-      "minecraft:despawn": {
-        "despawn_from_distance": {}
-      },
+
       "minecraft:behavior.float": {
         "priority": 0
       },
@@ -159,11 +157,6 @@
       }
     },
     "events": {
-      "from_egg": {
-        "add": {
-          "component_groups": ["minecraft:iron_chicken_baby"]
-        }
-      },
       "minecraft:entity_spawned": {
         "randomize": [
           {

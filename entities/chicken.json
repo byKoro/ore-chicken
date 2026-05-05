@@ -81,7 +81,12 @@
             "minecraft:copper_block",
             "minecraft:diamond_block",
             "minecraft:emerald_block",
-            "minecraft:quartz_block"
+            "minecraft:quartz_block",
+            "minecraft:quartz_block",
+            "quartz_bricks",
+            "quartz_pillar",
+            "chiseled_quartz_block",
+            "smooth_quartz"
           ]
         },
         "minecraft:behavior.breed": {
@@ -223,9 +228,7 @@
       "minecraft:movement.basic": {},
       "minecraft:jump.static": {},
       "minecraft:can_climb": {},
-      "minecraft:despawn": {
-        "despawn_from_distance": {}
-      },
+
       "minecraft:behavior.float": {
         "priority": 0
       },

@@ -1,23 +1,32 @@
 {
-  "format_version": "1.20.50",
+  "format_version": "1.21.50",
   "minecraft:block": {
     "description": {
-      "identifier": "oc:copper_chicken_statue_exposed"
+      "identifier": "oc:copper_chicken_statue_exposed",
+      "states": {
+        "oc:pose": [0, 1, 2, 3],
+        "oc:wax": [false, true]
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": ["minecraft:cardinal_direction"],
+          "y_rotation_offset": 180
+        }
+      }
     },
     "components": {
+      "minecraft:custom_components": ["oc:on_interact"],
       "minecraft:display_name": "tile.oc:copper_chicken_statue_exposed.name",
-      "minecraft:geometry": {
-        "identifier": "geometry.copper_chicken_statue_exposed"
-      },
 
       "minecraft:material_instances": {
         "*": {
           "texture": "copper_chicken_exposed",
           "render_method": "alpha_test",
-          "ambient_occlusion": false,
-          "face_dimming": false
+          "ambient_occlusion": true,
+          "face_dimming": true
         }
       },
+
       "minecraft:collision_box": {
         "origin": [-4, 0, -4],
         "size": [8, 14, 8]
@@ -29,6 +38,60 @@
       "minecraft:destructible_by_mining": {
         "seconds_to_destroy": 3.0
       }
-    }
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": { "minecraft:transformation": { "rotation": [0, 0, 0] } }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": { "minecraft:transformation": { "rotation": [0, 90, 0] } }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": {
+          "minecraft:transformation": { "rotation": [0, 180, 0] }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": {
+          "minecraft:transformation": { "rotation": [0, -90, 0] }
+        }
+      },
+      {
+        "condition": "query.block_state('oc:pose') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.copper_chicken_statue_exposed_pose0"
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('oc:pose') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.copper_chicken_statue_exposed_pose1"
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('oc:pose') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.copper_chicken_statue_exposed_pose2"
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('oc:pose') == 3",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.copper_chicken_statue_exposed_pose3"
+          }
+        }
+      }
+    ]
   }
 }

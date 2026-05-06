@@ -10,7 +10,7 @@
       "properties": {
         "oc:oxidation": {
           "type": "int",
-          "range": [0, 3],
+          "range": [0, 4],
           "default": 0,
           "client_sync": true
         },
@@ -29,7 +29,32 @@
         },
         "minecraft:ageable": {
           "duration": 1200,
-          "feed_items": ["minecraft:copper_block"],
+          "feed_items": [
+            "minecraft:copper_block",
+            "minecraft:exposed_copper",
+            "minecraft:weathered_copper",
+            "minecraft:oxidized_copper",
+            "minecraft:waxed_copper",
+            "minecraft:waxed_exposed_copper",
+            "minecraft:waxed_weathered_copper",
+            "minecraft:waxed_oxidized_copper",
+            "minecraft:cut_copper",
+            "minecraft:exposed_cut_copper",
+            "minecraft:weathered_cut_copper",
+            "minecraft:oxidized_cut_copper",
+            "minecraft:waxed_cut_copper",
+            "minecraft:waxed_exposed_cut_copper",
+            "minecraft:waxed_weathered_cut_copper",
+            "minecraft:waxed_oxidized_cut_copper",
+            "minecraft:chiseled_copper",
+            "minecraft:exposed_chiseled_copper",
+            "minecraft:weathered_chiseled_copper",
+            "minecraft:oxidized_chiseled_copper",
+            "minecraft:waxed_chiseled_copper",
+            "minecraft:waxed_exposed_chiseled_copper",
+            "minecraft:waxed_weathered_chiseled_copper",
+            "minecraft:waxed_oxidized_chiseled_copper"
+          ],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
             "target": "self"
@@ -58,7 +83,32 @@
               "target": "baby"
             }
           },
-          "breed_items": ["minecraft:copper_block"]
+          "breed_items": [
+            "minecraft:copper_block",
+            "minecraft:exposed_copper",
+            "minecraft:weathered_copper",
+            "minecraft:oxidized_copper",
+            "minecraft:waxed_copper",
+            "minecraft:waxed_exposed_copper",
+            "minecraft:waxed_weathered_copper",
+            "minecraft:waxed_oxidized_copper",
+            "minecraft:cut_copper",
+            "minecraft:exposed_cut_copper",
+            "minecraft:weathered_cut_copper",
+            "minecraft:oxidized_cut_copper",
+            "minecraft:waxed_cut_copper",
+            "minecraft:waxed_exposed_cut_copper",
+            "minecraft:waxed_weathered_cut_copper",
+            "minecraft:waxed_oxidized_cut_copper",
+            "minecraft:chiseled_copper",
+            "minecraft:exposed_chiseled_copper",
+            "minecraft:weathered_chiseled_copper",
+            "minecraft:oxidized_chiseled_copper",
+            "minecraft:waxed_chiseled_copper",
+            "minecraft:waxed_exposed_chiseled_copper",
+            "minecraft:waxed_weathered_chiseled_copper",
+            "minecraft:waxed_oxidized_chiseled_copper"
+          ]
         },
         "minecraft:behavior.breed": {
           "priority": 3,
@@ -149,7 +199,7 @@
                   {
                     "domain": "oc:oxidation",
                     "test": "int_property",
-                    "operator": ">",
+                    "operator": ">=",
                     "value": 0
                   }
                 ]
@@ -260,7 +310,32 @@
       "minecraft:behavior.tempt": {
         "priority": 4,
         "speed_multiplier": 1,
-        "items": ["minecraft:copper_block"]
+        "items": [
+          "minecraft:copper_block",
+          "minecraft:exposed_copper",
+          "minecraft:weathered_copper",
+          "minecraft:oxidized_copper",
+          "minecraft:waxed_copper",
+          "minecraft:waxed_exposed_copper",
+          "minecraft:waxed_weathered_copper",
+          "minecraft:waxed_oxidized_copper",
+          "minecraft:cut_copper",
+          "minecraft:exposed_cut_copper",
+          "minecraft:weathered_cut_copper",
+          "minecraft:oxidized_cut_copper",
+          "minecraft:waxed_cut_copper",
+          "minecraft:waxed_exposed_cut_copper",
+          "minecraft:waxed_weathered_cut_copper",
+          "minecraft:waxed_oxidized_cut_copper",
+          "minecraft:chiseled_copper",
+          "minecraft:exposed_chiseled_copper",
+          "minecraft:weathered_chiseled_copper",
+          "minecraft:oxidized_chiseled_copper",
+          "minecraft:waxed_chiseled_copper",
+          "minecraft:waxed_exposed_chiseled_copper",
+          "minecraft:waxed_weathered_chiseled_copper",
+          "minecraft:waxed_oxidized_chiseled_copper"
+        ]
       },
       "minecraft:behavior.random_stroll": {
         "priority": 6,
@@ -326,6 +401,14 @@
           },
           {
             "first_valid": [
+              {
+                "filters": {
+                  "domain": "oc:wax",
+                  "test": "bool_property",
+                  "oc:wax": true
+                },
+                "set_property": { "oc:wax": false }
+              },
               {
                 "filters": {
                   "domain": "oc:oxidation",

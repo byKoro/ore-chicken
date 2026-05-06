@@ -16,12 +16,7 @@
         },
         "minecraft:ageable": {
           "duration": 1200,
-          "feed_items": [
-            "wheat_seeds",
-            "beetroot_seeds",
-            "melon_seeds",
-            "pumpkin_seeds"
-          ],
+          "feed_items": ["minecraft:emerald_block"],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
             "target": "self"
@@ -50,8 +45,7 @@
               "target": "baby"
             }
           },
-          "breed_items": ["minecraft:emerald_block"
-          ]
+          "breed_items": ["minecraft:emerald_block"]
         },
         "minecraft:behavior.breed": {
           "priority": 3,
@@ -138,12 +132,7 @@
       "minecraft:behavior.tempt": {
         "priority": 4,
         "speed_multiplier": 1,
-        "items": [
-          "wheat_seeds",
-          "beetroot_seeds",
-          "melon_seeds",
-          "pumpkin_seeds"
-        ]
+        "items": ["minecraft:emerald_block"]
       },
       "minecraft:behavior.random_stroll": {
         "priority": 6,

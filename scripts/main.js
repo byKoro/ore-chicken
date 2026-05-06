@@ -1,7 +1,8 @@
 import { ChickensUtils } from './chickens';
 import { Chickens } from './chickens_config';
-import { system, world } from '@minecraft/server';
+import { system, world, BlockPermutation, Entity } from '@minecraft/server';
 import { utils } from './utils';
+import { CopperChicken } from './copper_chicken';
 const { drop_chicken, convert_chicken, oxidation, waxOn } = ChickensUtils;
 
 system.runInterval(() => {
@@ -29,11 +30,6 @@ convert_chicken(Chickens.emerald);
 convert_chicken(Chickens.quartz);
 convert_chicken(Chickens.netherite);
 
-oxidation(Chickens.copper, 5);
+oxidation(Chickens.copper, 1200);
 
-waxOn({
-  entity: 'oc:copper_chicken',
-  itemFilter: 'minecraft:honeycomb',
-  waxProperty: 'oc:wax',
-  stageProperty: 'oc:oxidation',
-});
+CopperChicken.copper_chicken_statue();

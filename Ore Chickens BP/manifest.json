@@ -4,7 +4,7 @@
     "name": "Ore Chickens",
     "description": "Ore Chickens Behavior Pack",
     "uuid": "48bea468-7ef4-30e2-47a7-b207b5309cd0",
-    "version": [1, 0, 0],
+    "version": [1, 0, 1],
     "min_engine_version": [1, 16, 0]
   },
   "metadata": {

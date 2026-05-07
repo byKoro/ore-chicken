@@ -1,0 +1,182 @@
+{
+	"entity_sounds": {
+		"entities": {
+			"oc:netherite_chicken": {
+				"events": {
+					"ambient": "mob.chicken.say",
+					"death": "mob.chicken.hurt",
+					"eat": "",
+					"hurt": "mob.chicken.hurt",
+					"plop": "mob.chicken.plop",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.chicken.step",
+						"volume": 0.25
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"oc:quartz_chicken": {
+				"events": {
+					"ambient": "mob.chicken.say",
+					"death": "mob.chicken.hurt",
+					"eat": "",
+					"hurt": "mob.chicken.hurt",
+					"plop": "mob.chicken.plop",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.chicken.step",
+						"volume": 0.25
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"oc:emerald_chicken": {
+				"events": {
+					"ambient": "mob.chicken.say",
+					"death": "mob.chicken.hurt",
+					"eat": "",
+					"hurt": "mob.chicken.hurt",
+					"plop": "mob.chicken.plop",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.chicken.step",
+						"volume": 0.25
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"oc:diamond_chicken": {
+				"events": {
+					"ambient": "mob.chicken.say",
+					"death": "mob.chicken.hurt",
+					"eat": "",
+					"hurt": "mob.chicken.hurt",
+					"plop": "mob.chicken.plop",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.chicken.step",
+						"volume": 0.25
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"oc:copper_chicken": {
+				"events": {
+					"ambient": "mob.chicken.say",
+					"death": "mob.copper_golem.hurt",
+					"eat": "",
+					"hurt": "mob.copper_golem.hurt",
+					"plop": "mob.chicken.plop",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.copper_golem.step",
+						"volume": 0.25
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"oc:redstone_chicken": {
+				"events": {
+					"ambient": "mob.chicken.say",
+					"death": "mob.chicken.hurt",
+					"eat": "",
+					"hurt": "mob.chicken.hurt",
+					"plop": "mob.chicken.plop",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.chicken.step",
+						"volume": 0.25
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"oc:amethyst_chicken": {
+				"events": {
+					"ambient": "mob.chicken.say",
+					"death": "mob.chicken.hurt",
+					"eat": "",
+					"hurt": "mob.chicken.hurt",
+					"plop": "mob.chicken.plop",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.chicken.step",
+						"volume": 0.25
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"oc:lapis_chicken": {
+				"events": {
+					"ambient": "mob.chicken.say",
+					"death": "mob.chicken.hurt",
+					"eat": "",
+					"hurt": "mob.chicken.hurt",
+					"plop": "mob.chicken.plop",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.chicken.step",
+						"volume": 0.25
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"oc:coal_chicken": {
+				"events": {
+					"ambient": "mob.chicken.say",
+					"death": "mob.chicken.hurt",
+					"eat": "",
+					"hurt": "mob.chicken.hurt",
+					"plop": "mob.chicken.plop",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.chicken.step",
+						"volume": 0.25
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"oc:iron_chicken": {
+				"events": {
+					"ambient": "mob.chicken.say",
+					"death": "mob.chicken.hurt",
+					"eat": "",
+					"hurt": "mob.chicken.hurt",
+					"plop": "mob.chicken.plop",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.chicken.step",
+						"volume": 0.25
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"oc:gold_chicken": {
+				"events": {
+					"ambient": "mob.chicken.say",
+					"death": "mob.chicken.hurt",
+					"eat": "",
+					"hurt": "mob.chicken.hurt",
+					"plop": "mob.chicken.plop",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.chicken.step",
+						"volume": 0.25
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			}
+		}
+	}
+}

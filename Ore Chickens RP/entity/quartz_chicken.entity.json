@@ -1,0 +1,41 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "oc:quartz_chicken",
+			"min_engine_version": "1.12.0",
+			"materials": {
+				"default": "entity_alphatest",
+				"legs": "chicken_legs"
+			},
+			"textures": {
+				"default": "textures/entity/quartz_chicken"
+			},
+			"geometry": {
+				"default": "geometry.quartz_chicken"
+			},
+			"animations": {
+				"move": "animation.quartz_chicken.move",
+				"general": "animation.quartz_chicken.general",
+				"look_at_target": "animation.common.look_at_target",
+				"baby_transform": "animation.quartz_chicken.baby_transform"
+			},
+			"scripts": {
+				"animate": [
+					"general",
+					{
+						"move": "query.modified_move_speed"
+					},
+					"look_at_target",
+					{
+						"baby_transform": "query.is_baby"
+					}
+				]
+			},
+			"render_controllers": ["controller.render.chicken"],
+			"spawn_egg": {
+				"texture": "quartz_chicken_spawn_egg"
+			}
+		}
+	}
+}

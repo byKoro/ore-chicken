@@ -1,0 +1,45 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "oc:copper_chicken",
+      "min_engine_version": "1.12.0",
+      "materials": {
+        "default": "entity_alphatest",
+        "legs": "chicken_legs"
+      },
+      "textures": {
+        "stage0": "textures/entity/copper_chicken",
+        "stage1": "textures/entity/copper_chicken_stage01",
+        "stage2": "textures/entity/copper_chicken_stage02",
+        "stage3": "textures/entity/copper_chicken_stage03",
+        "stage4": "textures/entity/copper_chicken_stage04"
+      },
+      "geometry": {
+        "default": "geometry.copper_chicken"
+      },
+      "animations": {
+        "move": "animation.copper_chicken.move",
+        "general": "animation.copper_chicken.general",
+        "look_at_target": "animation.common.look_at_target",
+        "baby_transform": "animation.copper_chicken.baby_transform"
+      },
+      "scripts": {
+        "animate": [
+          "general",
+          {
+            "move": "query.modified_move_speed"
+          },
+          "look_at_target",
+          {
+            "baby_transform": "query.is_baby"
+          }
+        ]
+      },
+      "render_controllers": ["controller.render.copper_chicken"],
+      "spawn_egg": {
+        "texture": "copper_chicken_spawn_egg"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "resource_pack_name": "Ore Chickens RP",
+  "num_mip_levels": 4,
+  "padding": 8,
+  "texture_name": "atlas.terrain",
+  "texture_data": {
+    "copper_chicken_unoxidized": {
+      "textures": "textures/blocks/copper_chicken_unoxidized"
+    },
+    "copper_chicken_exposed": {
+      "textures": "textures/blocks/copper_chicken_exposed"
+    },
+    "copper_chicken_weathered": {
+      "textures": "textures/blocks/copper_chicken_weathered"
+    },
+    "copper_chicken_oxidized": {
+      "textures": "textures/blocks/copper_chicken_oxidized"
+    }
+  }
+}

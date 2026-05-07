@@ -1,0 +1,21 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.copper_chicken": {
+      "arrays": {
+        "textures": {
+          "Array.textures": [
+            "texture.stage0",
+            "texture.stage1",
+            "texture.stage2",
+            "texture.stage3",
+            "texture.stage4"
+          ]
+        }
+      },
+      "geometry": "geometry.default",
+      "materials": [{ "*": "material.default" }],
+      "textures": ["Array.textures[query.property('oc:oxidation')]"]
+    }
+  }
+}

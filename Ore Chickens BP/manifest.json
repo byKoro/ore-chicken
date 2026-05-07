@@ -12,7 +12,8 @@
     "generated_with": {
       "blockbench_entity_wizard": ["1.8.3"],
       "blockbench_block_wizard": ["1.6.1"]
-    }
+    },
+    "product_type": "addon"
   },
   "modules": [
     {

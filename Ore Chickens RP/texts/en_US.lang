@@ -25,3 +25,5 @@ tile.oc:copper_chicken_statue_oxidized.name=Oxidized Copper Chicken Statue
 tile.oc:copper_chicken_statue_weathered.name=Weathered Copper Chicken Statue
 tile.oc:copper_chicken_statue_exposed.name=Exposed Copper Chicken Statue
 tile.oc:copper_chicken_statue_unoxidized.name=Copper Chicken Statue
+item.oc:chicken_cage=Chicken Cage
+item.oc:cage=Cage

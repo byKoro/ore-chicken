@@ -73,33 +73,6 @@ export class ChickensUtils {
     }
   }
 
-  static convert_chicken(config) {
-    world.afterEvents.playerInteractWithEntity.subscribe(data => {
-      const player = data.player;
-      const item = data.itemStack;
-      const mob = data.target;
-      const { itemConvert, entityToConvert, entity, sound } = config;
-      for (const itemC of itemConvert) {
-        if (item?.typeId == itemC && mob.typeId == entityToConvert) {
-          const newMob = mob.dimension.spawnEntity(entity, mob.location);
-          const rot = mob.getRotation();
-          const loc = mob.location;
-          newMob.setRotation(rot);
-          //newMob.runCommand(`tp @s ${loc.x} ${loc.y} ${loc.z} ${rot.y} ${rot.x}`);
-          newMob.dimension.spawnParticle(
-            'minecraft:ice_evaporation_emitter',
-            newMob.location
-          );
-          if (sound) {
-            player.playSound(sound, newMob.location);
-          }
-          newMob.triggerEvent('minecraft:ageable_grow_up');
-          mob.remove();
-        }
-      }
-    });
-  }
-
   static oxidation(config, intervalTicks) {
     system.runInterval(() => {
       const dimensions = ['overworld', 'nether', 'the_end'];

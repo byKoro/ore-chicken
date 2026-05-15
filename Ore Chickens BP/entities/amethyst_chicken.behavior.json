@@ -61,6 +61,34 @@
       }
     },
     "components": {
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "oc:cage"
+                  }
+                ]
+              },
+              "event": "oc:cage",
+              "target": "other"
+            },
+            "swing": true,
+            "use_item": true,
+            "play_sounds": "plop"
+          }
+        ]
+      },
       "minecraft:type_family": {
         "family": ["chicken", "mob"]
       },
@@ -157,6 +185,7 @@
       }
     },
     "events": {
+      "oc:cage": {},
       "minecraft:entity_spawned": {
         "randomize": [
           {

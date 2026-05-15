@@ -246,6 +246,30 @@
             "particle_on_start": { "copper_event": "scrape" },
             "hurt_item": 1,
             "swing": true
+          },
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "oc:cage"
+                  }
+                ]
+              },
+              "event": "oc:cage",
+              "target": "other"
+            },
+            "swing": true,
+            "use_item": true,
+            "play_sounds": "plop"
           }
         ]
       },
@@ -358,6 +382,7 @@
       }
     },
     "events": {
+      "oc:cage": {},
       "minecraft:entity_spawned": {
         "randomize": [
           {

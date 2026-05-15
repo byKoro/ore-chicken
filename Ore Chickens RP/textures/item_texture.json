@@ -1,39 +1,45 @@
 {
-  "texture_data": {
-    "netherite_chicken_spawn_egg": {
-      "textures": ["textures/items/spawn_eggs/netherite_chicken_spawn_egg"]
-    },
-    "quartz_chicken_spawn_egg": {
-      "textures": ["textures/items/spawn_eggs/quartz_chicken_spawn_egg"]
-    },
-    "emerald_chicken_spawn_egg": {
-      "textures": ["textures/items/spawn_eggs/emerald_chicken_spawn_egg"]
-    },
-    "diamond_chicken_spawn_egg": {
-      "textures": ["textures/items/spawn_eggs/diamond_chicken_spawn_egg"]
-    },
-    "copper_chicken_spawn_egg": {
-      "textures": ["textures/items/spawn_eggs/copper_chicken_spawn_egg"]
-    },
-    "redstone_chicken_spawn_egg": {
-      "textures": ["textures/items/spawn_eggs/redstone_chicken_spawn_egg"]
-    },
-    "amethyst_chicken_spawn_egg": {
-      "textures": ["textures/items/spawn_eggs/amethyst_chicken_spawn_egg"]
-    },
-    "lapis_chicken_spawn_egg": {
-      "textures": "textures/items/spawn_eggs/lapis_chicken_spawn_egg"
-    },
-    "coal_chicken_spawn_egg": {
-      "textures": "textures/items/spawn_eggs/coal_chicken_spawn_egg"
-    },
-    "spawn_egg_gold_chicken": {
-      "textures": "textures/items/spawn_eggs/spawn_egg_gold_chicken"
-    },
-    "spawn_egg_iron_chicken": {
-      "textures": "textures/items/spawn_eggs/spawn_egg_iron_chicken"
-    }
-  },
-  "resource_pack_name": "oc:RP Ore Chickens",
-  "texture_name": "atlas.items"
+	"texture_data": {
+		"cage": {
+			"textures": "textures/items/cage.png"
+		},
+		"chicken_cage": {
+			"textures": "textures/items/chicken_cage.png"
+		},
+		"netherite_chicken_spawn_egg": {
+			"textures": ["textures/items/spawn_eggs/netherite_chicken_spawn_egg"]
+		},
+		"quartz_chicken_spawn_egg": {
+			"textures": ["textures/items/spawn_eggs/quartz_chicken_spawn_egg"]
+		},
+		"emerald_chicken_spawn_egg": {
+			"textures": ["textures/items/spawn_eggs/emerald_chicken_spawn_egg"]
+		},
+		"diamond_chicken_spawn_egg": {
+			"textures": ["textures/items/spawn_eggs/diamond_chicken_spawn_egg"]
+		},
+		"copper_chicken_spawn_egg": {
+			"textures": ["textures/items/spawn_eggs/copper_chicken_spawn_egg"]
+		},
+		"redstone_chicken_spawn_egg": {
+			"textures": ["textures/items/spawn_eggs/redstone_chicken_spawn_egg"]
+		},
+		"amethyst_chicken_spawn_egg": {
+			"textures": ["textures/items/spawn_eggs/amethyst_chicken_spawn_egg"]
+		},
+		"lapis_chicken_spawn_egg": {
+			"textures": "textures/items/spawn_eggs/lapis_chicken_spawn_egg"
+		},
+		"coal_chicken_spawn_egg": {
+			"textures": "textures/items/spawn_eggs/coal_chicken_spawn_egg"
+		},
+		"spawn_egg_gold_chicken": {
+			"textures": "textures/items/spawn_eggs/spawn_egg_gold_chicken"
+		},
+		"spawn_egg_iron_chicken": {
+			"textures": "textures/items/spawn_eggs/spawn_egg_iron_chicken"
+		}
+	},
+	"resource_pack_name": "oc:RP Ore Chickens",
+	"texture_name": "atlas.items"
 }

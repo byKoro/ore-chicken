@@ -4,6 +4,8 @@ export class utils {
   static get_entities(entityType) {
     const result = [];
     const dimensionId = ['overworld', 'nether', 'the_end'];
+    const Y_MIN = { overworld: -64, nether: 0, the_end: 0 };
+    const Y_MAX = { overworld: 320, nether: 128, the_end: 256 };
 
     for (const dimId of dimensionId) {
       const dimension = world.getDimension(dimId);
@@ -14,6 +16,10 @@ export class utils {
 
       for (const e of entities) {
         const loc = e.location;
+
+        const blockY = Math.floor(loc.y) - 1;
+
+        if (blockY < Y_MIN[dimId] || blockY > Y_MAX[dimId]) continue;
 
         const blockPos = {
           x: Math.floor(loc.x),

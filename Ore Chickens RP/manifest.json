@@ -1,26 +1,27 @@
 {
-  "format_version": 2,
-  "header": {
-    "name": "Ore Chickens RP",
-    "description": "Ore Chickens Resource Pack",
-    "uuid": "6fa869f0-c39a-3044-9cdc-5b44b1ce5e52",
-    "version": [1, 0, 1],
-    "min_engine_version": [1, 16, 0]
-  },
-  "metadata": {
-    "authors": ["Koro"],
-    "generated_with": {
-      "blockbench_entity_wizard": ["1.8.3"],
-      "blockbench_block_wizard": ["1.6.1"]
-    },
-    "product_type": "addon"
-  },
-  "modules": [
-    {
-      "description": "Ore Chickens",
-      "type": "resources",
-      "uuid": "c8c399ea-6636-b981-ab0d-efe7353154f4",
-      "version": [1, 0, 0]
-    }
-  ]
+	"format_version": 2,
+	"header": {
+		"name": "Ore Chickens RP",
+		"description": "Ore Chickens Resource Pack",
+		"uuid": "6fa869f0-c39a-3044-9cdc-5b44b1ce5e52",
+		"version": [1, 0, 1],
+		"min_engine_version": [1, 16, 0]
+	},
+	"metadata": {
+		"authors": ["Koro"],
+		"generated_with": {
+			"blockbench_entity_wizard": ["1.8.3"],
+			"blockbench_block_wizard": ["1.6.1"],
+			"blockbench_item_wizard": ["1.2.4"]
+		},
+		"product_type": "addon"
+	},
+	"modules": [
+		{
+			"description": "Ore Chickens",
+			"type": "resources",
+			"uuid": "c8c399ea-6636-b981-ab0d-efe7353154f4",
+			"version": [1, 0, 0]
+		}
+	]
 }

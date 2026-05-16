@@ -1,6 +1,10 @@
 import { Component, system, world } from '@minecraft/server';
 import { Chickens } from '../Configs/chickens_config';
 
+const allowedEntities = new Set(
+  Object.values(Chickens).map(c => c.entityToConvert)
+);
+
 export function convertToOreChicken() {
   world.afterEvents.playerInteractWithEntity.subscribe(ev => {
     const { target, player } = ev;
@@ -9,7 +13,7 @@ export function convertToOreChicken() {
     const currentItem = inventory?.container.getItem(player.selectedSlotIndex);
 
     if (!currentItem) return;
-    if (target.typeId !== 'minecraft:chicken') return;
+    if (!allowedEntities.has(target.typeId)) return;
 
     const isBaby = target.getComponent('is_baby');
 
@@ -20,6 +24,7 @@ export function convertToOreChicken() {
       const newOreChicken = spawnOreChicken(target, chicken);
       setAdult(newOreChicken);
       setView(target, newOreChicken);
+      playChickenSound(newOreChicken);
 
       break;
     }
@@ -47,4 +52,14 @@ function setView(target, newOreChicken) {
 
 function setAdult(newOreChicken) {
   newOreChicken.triggerEvent('minecraft:ageable_grow_up');
+}
+
+function playChickenSound(newOreChicken) {
+  const config = Object.values(Chickens).find(
+    c => c.entity === newOreChicken.typeId
+  );
+
+  if (!config?.sound) return;
+
+  newOreChicken.dimension.playSound(config.sound, newOreChicken.location);
 }

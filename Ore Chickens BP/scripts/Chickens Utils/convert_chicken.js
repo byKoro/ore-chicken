@@ -1,5 +1,5 @@
 import { Component, system, world } from '@minecraft/server';
-import { Chickens } from '../chickens_config';
+import { Chickens } from '../Configs/chickens_config';
 
 export function convertToOreChicken() {
   world.afterEvents.playerInteractWithEntity.subscribe(ev => {
@@ -23,7 +23,7 @@ export function convertToOreChicken() {
 
       break;
     }
-    
+
     target.remove();
   });
 }

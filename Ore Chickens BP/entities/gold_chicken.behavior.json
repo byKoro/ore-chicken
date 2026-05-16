@@ -9,6 +9,30 @@
       "is_experimental": false
     },
     "component_groups": {
+      "oc:ore_egg_normal": {
+        "minecraft:spawn_entity": {
+          "entities": [
+            {
+              "min_wait_time": 120,
+              "max_wait_time": 240,
+              "spawn_sound": "plop",
+              "spawn_item": "minecraft:gold_ingot"
+            }
+          ]
+        }
+      },
+      "oc:ore_egg_fast": {
+        "minecraft:spawn_entity": {
+          "entities": [
+            {
+              "min_wait_time": 30,
+              "max_wait_time": 60,
+              "spawn_sound": "plop",
+              "spawn_item": "minecraft:gold_ingot"
+            }
+          ]
+        }
+      },
       "minecraft:gold_chicken_baby": {
         "minecraft:is_baby": {},
         "minecraft:scale": {
@@ -211,18 +235,25 @@
           "component_groups": ["minecraft:gold_chicken_baby"]
         },
         "add": {
-          "component_groups": [
-            "minecraft:gold_chicken_adult_base",
-            "oc:gold_chicken_adult_normal"
-          ]
+          "component_groups": ["minecraft:gold_chicken_adult_base"]
         }
       },
       "minecraft:spawn_adult": {
         "add": {
           "component_groups": [
             "minecraft:gold_chicken_adult_base",
-            "oc:gold_chicken_adult_normal"
+            "oc:ore_egg_normal"
           ]
+        }
+      },
+      "oc:start_ore_egg_normal": {
+        "add": {
+          "component_groups": ["oc:ore_egg_normal"]
+        }
+      },
+      "oc:start_ore_egg_fast": {
+        "add": {
+          "component_groups": ["oc:ore_egg_fast"]
         }
       }
     }

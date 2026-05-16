@@ -1,31 +1,21 @@
 import { ChickensUtils } from './chickens';
-import { Chickens } from './chickens_config';
-import { system, world, BlockPermutation, Entity } from '@minecraft/server';
-import { utils } from './utils';
+import { Chickens } from './Configs/chickens_config';
 import { CopperChicken } from './copper_chicken';
-import { cage, spawn_cage } from './cage';
+import { cage, spawn_cage } from './Items/cage';
 import { convertToOreChicken } from './Chickens Utils/convert_chicken';
+import { boostChickens } from './Chickens Utils/boost_chickens';
+import { system } from '@minecraft/server';
+import { getEntities } from './Chickens Utils/boost_chickens';
 
 convertToOreChicken();
-const { drop_chicken, convert_chicken, oxidation } = ChickensUtils;
 
-// ── Galinhas de recurso ──────────────────────────────────────────
 system.runInterval(() => {
-  drop_chicken(Chickens.gold);
-  drop_chicken(Chickens.iron);
-  drop_chicken(Chickens.coal);
-  drop_chicken(Chickens.lapis);
-  drop_chicken(Chickens.amethyst);
-  drop_chicken(Chickens.redstone);
-  drop_chicken(Chickens.copper);
-  drop_chicken(Chickens.diamond);
-  drop_chicken(Chickens.emerald);
-  drop_chicken(Chickens.quartz);
+  const entities = getEntities();
+  boostChickens(entities);
 }, 20);
 
-oxidation(Chickens.copper, 120000);
+ChickensUtils.oxidation(Chickens.copper, 120000);
 
-// ── Estátua de cobre ─────────────────────────────────────────────
 CopperChicken.copper_chicken_statue();
 cage();
 spawn_cage();

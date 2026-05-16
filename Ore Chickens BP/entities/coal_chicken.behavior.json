@@ -9,6 +9,30 @@
       "is_experimental": false
     },
     "component_groups": {
+      "oc:ore_egg_normal": {
+        "minecraft:spawn_entity": {
+          "entities": [
+            {
+              "min_wait_time": 120,
+              "max_wait_time": 240,
+              "spawn_sound": "plop",
+              "spawn_item": "minecraft:coal"
+            }
+          ]
+        }
+      },
+      "oc:ore_egg_fast": {
+        "minecraft:spawn_entity": {
+          "entities": [
+            {
+              "min_wait_time": 30,
+              "max_wait_time": 60,
+              "spawn_sound": "plop",
+              "spawn_item": "minecraft:coal"
+            }
+          ]
+        }
+      },
       "minecraft:coal_chicken_baby": {
         "minecraft:is_baby": {},
         "minecraft:scale": {
@@ -216,7 +240,20 @@
       },
       "minecraft:spawn_adult": {
         "add": {
-          "component_groups": ["minecraft:coal_chicken_adult"]
+          "component_groups": [
+            "minecraft:coal_chicken_adult",
+            "oc:ore_egg_normal"
+          ]
+        }
+      },
+      "oc:start_ore_egg_normal": {
+        "add": {
+          "component_groups": ["oc:ore_egg_normal"]
+        }
+      },
+      "oc:start_ore_egg_fast": {
+        "add": {
+          "component_groups": ["oc:ore_egg_fast"]
         }
       }
     }

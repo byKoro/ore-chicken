@@ -23,10 +23,12 @@ export function getEntities() {
 
     for (const chicken of chickens) {
       const chickenData = chickenMap.get(chicken.typeId);
-
+      if (!chicken.isValid) continue;
       if (!chickenData) continue;
 
       const loc = chicken.location;
+      if (loc.y < -64 || loc.y > 320) continue;
+
       const block = dim.getBlock({
         x: Math.floor(loc.x),
         y: Math.floor(loc.y) - 1,
@@ -50,6 +52,7 @@ export function boostChickens(config) {
   const { validChickens, invalidChickens } = config;
 
   for (const chicken of validChickens) {
+    if (!chicken.isValid) continue;
     const location = {
       x: chicken.location.x,
       y: chicken.location.y + 0.6,
@@ -66,6 +69,7 @@ export function boostChickens(config) {
   }
 
   for (const chicken of invalidChickens) {
+    if (!chicken?.isValid) continue;
     if (chicken.getDynamicProperty('boosted') !== false) {
       chicken.triggerEvent('oc:start_ore_egg_normal');
       chicken.setDynamicProperty('boosted', false);

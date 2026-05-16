@@ -5,6 +5,8 @@ const allowedEntities = new Set(
   Object.values(Chickens).map(c => c.entityToConvert)
 );
 
+const convertItems = new Set(Object.values(Chickens).map(c => c.itemConvert));
+
 export function convertToOreChicken() {
   world.afterEvents.playerInteractWithEntity.subscribe(ev => {
     const { target, player } = ev;
@@ -13,9 +15,12 @@ export function convertToOreChicken() {
     const currentItem = inventory?.container.getItem(player.selectedSlotIndex);
 
     if (!currentItem) return;
+
     if (!allowedEntities.has(target.typeId)) return;
 
-    const isBaby = target.getComponent('is_baby');
+    if (target.isValid) {
+      const isBaby = target.getComponent('is_baby');
+    }
 
     for (const chicken of Object.values(Chickens)) {
       // Checa se o item da mão é aceito pela galinha

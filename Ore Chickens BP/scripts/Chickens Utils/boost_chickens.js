@@ -8,6 +8,7 @@ import {
 } from '@minecraft/server';
 
 import { Chickens } from '../Configs/chickens_config';
+import { CopperChicken } from '../copper_chicken';
 
 const chickenMap = new Map(Object.values(Chickens).map(c => [c.entity, c]));
 
@@ -15,7 +16,6 @@ export function getEntities() {
   const validChickens = [];
   const invalidChickens = [];
   const copperChickens = [];
-
   for (const dimension of DimensionTypes.getAll()) {
     const dim = world.getDimension(dimension.typeId);
 
@@ -32,9 +32,9 @@ export function getEntities() {
         y: Math.floor(loc.y) - 1,
         z: Math.floor(loc.z),
       });
-      if (chicken.typeId == 'oc:copper_chicken') {
-        copperChickens.push(chicken);
-      }
+
+      if (chicken.typeId === 'oc:copper_chicken') copperChickens.push(chicken);
+
       if (chickenData && chickenData.block.includes(block?.typeId)) {
         validChickens.push(chicken);
       } else {
@@ -43,7 +43,7 @@ export function getEntities() {
     }
   }
 
-  return { validChickens, invalidChickens };
+  return { validChickens, invalidChickens, copperChickens };
 }
 
 export function boostChickens(config) {

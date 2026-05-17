@@ -1,7 +1,7 @@
-import { Dimension, system, BlockPermutation, world } from '@minecraft/server';
+import { BlockPermutation, world } from '@minecraft/server';
 
 function yawToCardinal(yaw) {
-  const n = ((yaw % 360) + 360) % 360; // normaliza para 0–360
+  const n = ((yaw % 360) + 360) % 360;
   if (n < 45 || n >= 315) return 'south';
   if (n < 135) return 'west';
   if (n < 225) return 'north';
@@ -12,9 +12,7 @@ function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-export function oxidationChickens(config) {
-  const { copperChickens } = config;
-
+export function oxidationChickens({ copperChickens }) {
   for (const c of copperChickens) {
     if (c.getProperty('oc:wax')) continue;
 
@@ -41,20 +39,14 @@ export function oxidationChickens(config) {
     };
 
     const block = dimension.getBlock(blockLoc);
-
     if (!block || block.typeId !== 'minecraft:air') continue;
 
-    const rot = c.getRotation();
-
-    const permutation = BlockPermutation.resolve(
-      'oc:copper_chicken_statue_oxidized',
-      {
-        'minecraft:cardinal_direction': yawToCardinal(rot.y),
+    block.setPermutation(
+      BlockPermutation.resolve('oc:copper_chicken_statue_oxidized', {
+        'minecraft:cardinal_direction': yawToCardinal(c.getRotation().y),
         'oc:pose': randomInt(0, 3),
-      }
+      })
     );
-
-    block.setPermutation(permutation);
 
     dimension.spawnParticle('minecraft:large_explosion_emitter', {
       x: loc.x,

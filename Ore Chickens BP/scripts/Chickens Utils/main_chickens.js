@@ -1,23 +1,16 @@
 import { system } from '@minecraft/server';
-import { getEntities } from './boost_chickens';
+import { getEntities, boostChickens } from './boost_chickens';
 import { oxidationChickens } from './oxidation_copper_chicken';
 import { convertToOreChicken } from './convert_chicken';
-import { boostChickens } from './boost_chickens';
 
-let tickCounter = 0;
-
+// Boost roda a cada segundo (60 ticks)
 system.runInterval(() => {
-  const entities = getEntities();
+  boostChickens(getEntities());
+}, 60);
 
-  boostChickens(entities);
-
-  tickCounter++;
-
-  if (tickCounter >= 1200) {
-    // 20 min
-    oxidationChickens(entities);
-    tickCounter = 0;
-  }
-}, 20);
+// Oxidação roda a cada 20 minutos (24000 ticks)
+system.runInterval(() => {
+  oxidationChickens(getEntities());
+}, 24000);
 
 convertToOreChicken();

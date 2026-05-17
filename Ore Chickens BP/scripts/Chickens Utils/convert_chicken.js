@@ -1,70 +1,46 @@
-import { Component, system, world } from '@minecraft/server';
+import { system, world } from '@minecraft/server';
 import { Chickens } from '../Configs/chickens_config';
 
-const allowedEntities = new Set(
-  Object.values(Chickens).map(c => c.entityToConvert)
-);
+// Set dos entityToConvert para early-exit sem iterar todas as configs
+const allowedEntities = new Set(Object.values(Chickens).map(c => c.entityToConvert));
 
-const convertItems = new Set(Object.values(Chickens).map(c => c.itemConvert));
+// Map de itemId → config da galinha (leitura O(1) no lugar de O(n) por loop)
+const itemToChicken = new Map();
+for (const chicken of Object.values(Chickens)) {
+  for (const item of chicken.itemConvert) {
+    // Um item pode mapear para várias galinhas; a mais específica
+    // (entityToConvert diferente de 'minecraft:chicken') tem prioridade.
+    if (!itemToChicken.has(item) || chicken.entityToConvert !== 'minecraft:chicken') {
+      itemToChicken.set(item, chicken);
+    }
+  }
+}
 
 export function convertToOreChicken() {
   world.afterEvents.playerInteractWithEntity.subscribe(ev => {
     const { target, player } = ev;
 
-    const inventory = player.getComponent('inventory');
-    const currentItem = inventory?.container.getItem(player.selectedSlotIndex);
-
-    if (!currentItem) return;
-
+    // Early-exit: entidade não é conversível
     if (!allowedEntities.has(target.typeId)) return;
 
-    if (target.isValid) {
-      const isBaby = target.getComponent('is_baby');
-    }
+    const inventory = player.getComponent('inventory');
+    const currentItem = inventory?.container.getItem(player.selectedSlotIndex);
+    if (!currentItem) return;
 
-    for (const chicken of Object.values(Chickens)) {
-      // Checa se o item da mão é aceito pela galinha
-      if (!chicken.itemConvert.includes(currentItem?.typeId)) continue;
+    const chicken = itemToChicken.get(currentItem.typeId);
+    if (!chicken) return;
 
-      const newOreChicken = spawnOreChicken(target, chicken);
-      setAdult(newOreChicken);
-      setView(target, newOreChicken);
-      playChickenSound(newOreChicken);
+    // Garante que a entidade-alvo é do tipo correto para essa conversão
+    if (target.typeId !== chicken.entityToConvert) return;
 
-      break;
+    const newOreChicken = target.dimension.spawnEntity(chicken.entity, target.location);
+    newOreChicken.triggerEvent('minecraft:ageable_grow_up');
+    newOreChicken.setRotation(target.getRotation());
+
+    if (chicken.sound) {
+      target.dimension.playSound(chicken.sound, newOreChicken.location);
     }
 
     target.remove();
   });
-}
-
-function spawnOreChicken(target, chicken) {
-  const locationSpawn = target.location;
-  const chickenType = chicken.entity;
-
-  const newOreChicken = target.dimension.spawnEntity(
-    chickenType,
-    locationSpawn
-  );
-
-  return newOreChicken;
-}
-
-function setView(target, newOreChicken) {
-  const direction = target.getRotation();
-  newOreChicken.setRotation(direction);
-}
-
-function setAdult(newOreChicken) {
-  newOreChicken.triggerEvent('minecraft:ageable_grow_up');
-}
-
-function playChickenSound(newOreChicken) {
-  const config = Object.values(Chickens).find(
-    c => c.entity === newOreChicken.typeId
-  );
-
-  if (!config?.sound) return;
-
-  newOreChicken.dimension.playSound(config.sound, newOreChicken.location);
 }

@@ -1,66 +1,44 @@
-import {
-  ItemStack,
-  ItemType,
-  system,
-  world,
-  EquipmentSlot,
-} from '@minecraft/server';
+import { ItemStack, system, world, EquipmentSlot } from '@minecraft/server';
 
 export function cage() {
   world.beforeEvents.playerInteractWithEntity.subscribe(ev => {
-    const player = ev.player;
-    const itemStack = ev.itemStack;
-    const target = ev.target;
-    let isBaby = target.getComponent('is_baby');
-    const inventory = player.getComponent('inventory');
-    const hud = inventory?.container;
+    const { player, itemStack, target } = ev;
 
     if (!target.typeId.startsWith('oc:')) return;
-    if (!itemStack) return;
+    if (itemStack?.typeId !== 'oc:cage') return;
 
-    if (itemStack?.typeId === 'oc:cage') {
-      isBaby ? (isBaby = 'Baby') : (isBaby = 'Adult');
+    const isBaby = target.getComponent('is_baby') ? 'Baby' : 'Adult';
+    const inventory = player.getComponent('inventory');
 
-      system.run(() => {
-        const chicken_cage = new ItemStack('oc:chicken_cage', 1);
-        chicken_cage.setLore([target.typeId, isBaby]);
-
-        hud?.addItem(chicken_cage);
-        target.remove();
-      });
-    }
+    system.run(() => {
+      const chicken_cage = new ItemStack('oc:chicken_cage', 1);
+      chicken_cage.setLore([target.typeId, isBaby]);
+      inventory?.container.addItem(chicken_cage);
+      target.remove();
+    });
   });
 }
 
 export function spawn_cage() {
   system.beforeEvents.startup.subscribe(ev => {
     ev.itemComponentRegistry.registerCustomComponent('oc:spawn_cage', {
-      onUseOn({ source, itemStack, block, faceLocation }) {
-        const player = source;
-        const location = block.location;
+      onUseOn({ source: player, itemStack, block }) {
         const chicken_spawn = itemStack.getLore()[0];
-
-        let isBaby = itemStack.getLore()[1];
-        isBaby = isBaby === 'Baby';
-
+        const isBaby = itemStack.getLore()[1] === 'Baby';
         const spawnLocation = block.center();
 
         system.run(() => {
-          const newChicken = player.dimension.spawnEntity(
-            chicken_spawn,
-            spawnLocation
+          const newChicken = player.dimension.spawnEntity(chicken_spawn, spawnLocation);
+          newChicken.triggerEvent(
+            isBaby ? 'minecraft:entity_born' : 'minecraft:ageable_grow_up'
           );
-          if (isBaby) {
-            newChicken.triggerEvent('minecraft:entity_born');
-          } else {
-            newChicken.triggerEvent('minecraft:ageable_grow_up');
-          }
 
-          player.dimension.playSound('mob.chicken.say', player.location);
+          // Som toca no local do spawn, não do jogador
+          player.dimension.playSound('mob.chicken.say', spawnLocation);
 
-          const inventory = player.getComponent('inventory');
-          const container = inventory.container;
+          const container = player.getComponent('inventory').container;
           const item = container.getItem(player.selectedSlotIndex);
+          if (!item) return;
 
           if (item.amount > 1) {
             item.amount -= 1;

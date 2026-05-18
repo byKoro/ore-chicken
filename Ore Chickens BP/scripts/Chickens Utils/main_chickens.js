@@ -11,6 +11,6 @@ system.runInterval(() => {
 // Oxidação roda a cada 20 minutos (24000 ticks)
 system.runInterval(() => {
   oxidationChickens(getEntities());
-}, 24000);
+}, 12000);
 
 convertToOreChicken();

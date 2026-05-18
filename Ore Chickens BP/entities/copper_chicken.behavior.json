@@ -331,7 +331,7 @@
       "minecraft:damage_sensor": {
         "triggers": {
           "cause": "fall",
-          "deals_damage": false
+          "deals_damage": "no"
         }
       },
       "minecraft:leashable": {
@@ -396,10 +396,7 @@
       },
       "minecraft:behavior.random_look_around": { "priority": 8 },
       "minecraft:physics": {},
-      "minecraft:pushable": {
-        "is_pushable": true,
-        "is_pushable_by_piston": true
-      },
+
       "minecraft:conditional_bandwidth_optimization": {},
       "minecraft:loot": {
         "table": "loot_tables/entities/copper_chicken.json"

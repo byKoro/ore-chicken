@@ -93,7 +93,7 @@
           }
         ]
       },
-      "minecraft:fire_immune": true,
+      "minecraft:fire_immune": {},
       "minecraft:type_family": {
         "family": ["chicken", "mob"]
       },
@@ -130,7 +130,7 @@
       "minecraft:damage_sensor": {
         "triggers": {
           "cause": "fall",
-          "deals_damage": false
+          "deals_damage": "no"
         }
       },
       "minecraft:leashable": {
@@ -180,10 +180,7 @@
         "priority": 8
       },
       "minecraft:physics": {},
-      "minecraft:pushable": {
-        "is_pushable": true,
-        "is_pushable_by_piston": true
-      },
+
       "minecraft:conditional_bandwidth_optimization": {},
       "minecraft:loot": {
         "table": "loot_tables/entities/netherite_chicken.json"

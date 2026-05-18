@@ -21,17 +21,18 @@
 				"baby_transform": "animation.diamond_chicken.baby_transform"
 			},
 			"scripts": {
-				"animate": [
-					"general",
-					{
-						"move": "query.modified_move_speed"
-					},
-					"look_at_target",
-					{
-						"baby_transform": "query.is_baby"
-					}
-				]
-			},
+        "initialize": ["variable.wing_flap = 0;"],
+        "animate": [
+          "general",
+          {
+            "move": "query.modified_move_speed"
+          },
+          "look_at_target",
+          {
+            "baby_transform": "query.is_baby"
+          }
+        ]
+      },
 			"render_controllers": ["controller.render.chicken"],
 			"spawn_egg": {
 				"texture": "diamond_chicken_spawn_egg"

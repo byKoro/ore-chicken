@@ -21,6 +21,7 @@
         "baby_transform": "animation.gold_chicken.baby_transform"
       },
       "scripts": {
+        "initialize": ["variable.wing_flap = 0;"],
         "animate": [
           "general",
           {

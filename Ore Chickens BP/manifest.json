@@ -1,44 +1,44 @@
 {
-	"format_version": 2,
-	"header": {
-		"name": "Ore Chickens",
-		"description": "Ore Chickens Behavior Pack",
-		"uuid": "48bea468-7ef4-30e2-47a7-b207b5309cd0",
-		"version": [1, 0, 1],
-		"min_engine_version": [1, 16, 0]
-	},
-	"metadata": {
-		"authors": ["Koro"],
-		"generated_with": {
-			"blockbench_entity_wizard": ["1.8.3"],
-			"blockbench_block_wizard": ["1.6.1"],
-			"blockbench_item_wizard": ["1.2.4"]
-		},
-		"product_type": "addon"
-	},
-	"modules": [
-		{
-			"description": "Behavior",
-			"version": [1, 0, 0],
-			"uuid": "a1c0a284-36bf-7e0f-7e85-5ae8883d0de1",
-			"type": "data"
-		},
-		{
-			"type": "script",
-			"language": "Javascript",
-			"entry": "scripts/main.js",
-			"uuid": "e75f884f-fc22-48a6-95ad-25e57b2a8cfe",
-			"version": [1, 0, 0]
-		}
-	],
-	"dependencies": [
-		{
-			"uuid": "6fa869f0-c39a-3044-9cdc-5b44b1ce5e52",
-			"version": [1, 0, 0]
-		},
-		{
-			"module_name": "@minecraft/server",
-			"version": "2.6.0"
-		}
-	]
+  "format_version": 2,
+  "header": {
+    "name": "Ore Chickens",
+    "description": "Ore Chickens Behavior Pack",
+    "uuid": "48bea468-7ef4-30e2-47a7-b207b5309cd0",
+    "version": [1, 0, 1],
+    "min_engine_version": [1, 16, 0]
+  },
+  "metadata": {
+    "authors": ["Koro"],
+    "generated_with": {
+      "blockbench_entity_wizard": ["1.8.3"],
+      "blockbench_block_wizard": ["1.6.1"],
+      "blockbench_item_wizard": ["1.2.4"]
+    },
+    "product_type": "addon"
+  },
+  "modules": [
+    {
+      "description": "Behavior",
+      "version": [1, 0, 0],
+      "uuid": "a1c0a284-36bf-7e0f-7e85-5ae8883d0de1",
+      "type": "data"
+    },
+    {
+      "type": "script",
+      "language": "Javascript",
+      "entry": "scripts/main.js",
+      "uuid": "e75f884f-fc22-48a6-95ad-25e57b2a8cfe",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "6fa869f0-c39a-3044-9cdc-5b44b1ce5e52",
+      "version": [1, 0, 0]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.6.0"
+    }
+  ]
 }

@@ -1,38 +1,62 @@
 export const Chickens = {
   gold: {
     entity: 'oc:gold_chicken',
-    block: ['minecraft:gold_block'],
-    itemConvert: ['minecraft:gold_block'],
+    block: [
+      'minecraft:gold_block',
+    ],
+    itemConvert: [
+      'minecraft:gold_block',
+    ],
     entityToConvert: 'minecraft:chicken',
   },
   iron: {
     entity: 'oc:iron_chicken',
-    block: ['minecraft:iron_block'],
-    itemConvert: ['minecraft:iron_block'],
+    block: [
+      'minecraft:iron_block',
+    ],
+    itemConvert: [
+      'minecraft:iron_block',
+    ],
     entityToConvert: 'minecraft:chicken',
   },
   coal: {
     entity: 'oc:coal_chicken',
-    block: ['minecraft:coal_block'],
-    itemConvert: ['minecraft:coal_block'],
+    block: [
+      'minecraft:coal_block',
+    ],
+    itemConvert: [
+      'minecraft:coal_block',
+    ],
     entityToConvert: 'minecraft:chicken',
   },
   lapis: {
     entity: 'oc:lapis_chicken',
-    block: ['minecraft:lapis_block'],
-    itemConvert: ['minecraft:lapis_block'],
+    block: [
+      'minecraft:lapis_block',
+    ],
+    itemConvert: [
+      'minecraft:lapis_block',
+    ],
     entityToConvert: 'minecraft:chicken',
   },
   amethyst: {
     entity: 'oc:amethyst_chicken',
-    block: ['minecraft:amethyst_block'],
-    itemConvert: ['minecraft:budding_amethyst'],
+    block: [
+      'minecraft:amethyst_block',
+    ],
+    itemConvert: [
+      'minecraft:budding_amethyst',
+    ],
     entityToConvert: 'minecraft:chicken',
   },
   redstone: {
     entity: 'oc:redstone_chicken',
-    block: ['minecraft:redstone_block'],
-    itemConvert: ['minecraft:redstone_block'],
+    block: [
+      'minecraft:redstone_block',
+    ],
+    itemConvert: [
+      'minecraft:redstone_block',
+    ],
     entityToConvert: 'minecraft:chicken',
   },
   copper: {
@@ -93,19 +117,29 @@ export const Chickens = {
   },
   diamond: {
     entity: 'oc:diamond_chicken',
-    block: ['minecraft:diamond_block'],
-    itemConvert: ['minecraft:diamond_block'],
+    block: [
+      'minecraft:diamond_block',
+    ],
+    itemConvert: [
+      'minecraft:diamond_block',
+    ],
     entityToConvert: 'minecraft:chicken',
   },
   emerald: {
     entity: 'oc:emerald_chicken',
-    block: ['minecraft:emerald_block'],
-    itemConvert: ['minecraft:emerald_block'],
+    block: [
+      'minecraft:emerald_block',
+    ],
+    itemConvert: [
+      'minecraft:emerald_block',
+    ],
     entityToConvert: 'minecraft:chicken',
   },
   quartz: {
     entity: 'oc:quartz_chicken',
-    block: ['minecraft:quartz_block'],
+    block: [
+      'minecraft:quartz_block',
+    ],
     itemConvert: [
       'minecraft:quartz_block',
       'minecraft:quartz_bricks',
@@ -117,8 +151,12 @@ export const Chickens = {
   },
   netherite: {
     entity: 'oc:netherite_chicken',
-    block: ['minecraft:netherite_block'],
-    itemConvert: ['minecraft:netherite_upgrade_smithing_template'],
+    block: [
+      'minecraft:netherite_block',
+    ],
+    itemConvert: [
+      'minecraft:netherite_upgrade_smithing_template',
+    ],
     entityToConvert: 'oc:diamond_chicken',
     sound: 'smithing_table.use',
   },
